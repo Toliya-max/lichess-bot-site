@@ -31,18 +31,29 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         run: |
+          echo "Token length: ${#NETLIFY_AUTH_TOKEN} (expected ~40)"
+          echo "Site ID length: ${#NETLIFY_SITE_ID} (expected 36)"
+          echo "Site ID first chars: ${NETLIFY_SITE_ID:0:8}..."
           if [ -z "$NETLIFY_AUTH_TOKEN" ] || [ -z "$NETLIFY_SITE_ID" ]; then
             echo "ERROR: NETLIFY_AUTH_TOKEN / NETLIFY_SITE_ID secrets missing"
             exit 1
           fi
-          response=$(curl -sS -X POST \
+          echo "ZIP size: $(ls -l site.zip | awk '{print $5}') bytes"
+          http_code=$(curl -sS -o /tmp/response.json -w '%{http_code}' -X POST \
             -H "Content-Type: application/zip" \
             -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" \
             --data-binary "@site.zip" \
             "https://api.netlify.com/api/v1/sites/$NETLIFY_SITE_ID/deploys")
-          echo "$response" | head -c 500
-          url=$(echo "$response" | python3 -c "import sys,json; print(json.load(sys.stdin).get('ssl_url',''))")
+          echo "HTTP $http_code"
+          echo "--- response ---"
+          head -c 800 /tmp/response.json
           echo ""
+          echo "--- end ---"
+          if [ "$http_code" != "200" ] && [ "$http_code" != "201" ]; then
+            echo "Netlify API returned non-2xx — failing"
+            exit 1
+          fi
+          url=$(python3 -c "import json; print(json.load(open('/tmp/response.json')).get('ssl_url',''))")
           echo "Deployed: $url"
           echo "DEPLOY_URL=$url" >> $GITHUB_ENV
 
