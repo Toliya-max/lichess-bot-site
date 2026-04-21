@@ -1,0 +1,8 @@
+.netlify-config
+*.prev.html
+*.prev.css
+.DS_Store
+Thumbs.db
+*.swp
+*.tmp
+*.bak

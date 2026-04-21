@@ -1,0 +1,53 @@
+name: Deploy to Netlify
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: netlify-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Package site
+        run: |
+          mkdir -p build
+          # copy everything except meta/CI files
+          rsync -a --exclude='.git' --exclude='.github' --exclude='.netlify-config' \
+                --exclude='*.prev.html' --exclude='*.prev.css' --exclude='.gitignore' \
+                --exclude='README.md' ./ ./build/
+          cd build && zip -rq ../site.zip . && cd ..
+          ls -lh site.zip
+
+      - name: Deploy to Netlify
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: |
+          if [ -z "$NETLIFY_AUTH_TOKEN" ] || [ -z "$NETLIFY_SITE_ID" ]; then
+            echo "ERROR: NETLIFY_AUTH_TOKEN / NETLIFY_SITE_ID secrets missing"
+            exit 1
+          fi
+          response=$(curl -sS -X POST \
+            -H "Content-Type: application/zip" \
+            -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" \
+            --data-binary "@site.zip" \
+            "https://api.netlify.com/api/v1/sites/$NETLIFY_SITE_ID/deploys")
+          echo "$response" | head -c 500
+          url=$(echo "$response" | python3 -c "import sys,json; print(json.load(sys.stdin).get('ssl_url',''))")
+          echo ""
+          echo "Deployed: $url"
+          echo "DEPLOY_URL=$url" >> $GITHUB_ENV
+
+      - name: Summary
+        run: |
+          echo "### Netlify deploy 🚀" >> $GITHUB_STEP_SUMMARY
+          echo "- Site: $DEPLOY_URL" >> $GITHUB_STEP_SUMMARY
+          echo "- Commit: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
