@@ -72,15 +72,20 @@
       const data = await r.json();
       currentSession = data.sessionId;
 
-      const usdMap = { 1: 0.54, 7: 2.20, 30: 5.50, 90: 11.00, 365: 22.00 };
-      const usd = usdMap[data.days] ?? +(data.amount / 90).toFixed(2);
-      document.getElementById("coCode").textContent = data.code;
-      document.getElementById("coCodeSmall").textContent = data.code;
-      document.getElementById("coAmount").textContent = data.amount;
-      document.getElementById("coAmountUsd").textContent = "$" + usd.toFixed(2);
-      document.getElementById("coAmountInline").textContent = data.amount;
-      document.getElementById("coTierLabel").textContent = data.label;
-      document.getElementById("coOpenDA").href = data.payUrl;
+      const amountStr = Number(data.amount).toFixed(2);
+      const price = "$" + amountStr;
+      const setText = (id, val) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = val;
+      };
+      setText("coCode", data.code);
+      setText("coCodeSmall", data.code);
+      setText("coAmount", amountStr);
+      setText("coAmountUsd", price);
+      setText("coAmountInline", price);
+      setText("coTierLabel", data.label);
+      const daLink = document.getElementById("coOpenDA");
+      if (daLink) daLink.href = data.payUrl;
 
       showStep("pay");
       startPolling(data.sessionId);
