@@ -3,4 +3,4 @@ Allow: /
 Allow: /downloads/
 Allow: /legal/
 
-Sitemap: https://lichess-bot-controller.netlify.app/sitemap.xml
+Sitemap: /sitemap.xml
