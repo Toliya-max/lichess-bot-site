@@ -303,28 +303,21 @@
 
 <div class="marquee" id="marquee" aria-hidden="true">
   <div class="marquee__track" id="marqueeTrack">
-    <!-- Filled by script.js with rAF-driven content for buttery scroll -->
-    <span class="marquee__item"><span class="marquee__glyph">♞</span> STOCKFISH 18</span>
+    <span class="marquee__item"><span class="marquee__tag">info</span> depth 18 multipv 1 score cp +47 nodes 1.23M nps 8.4M pv e2e4 e7e5 g1f3</span>
     <span class="marquee__dot">·</span>
-    <span class="marquee__item">NNUE NEURAL NET</span>
+    <span class="marquee__item"><span class="marquee__tag">id</span> name Stockfish 18 · build NNUE-bmi2</span>
     <span class="marquee__dot">·</span>
-    <span class="marquee__item">3000+ ELO</span>
+    <span class="marquee__item"><span class="marquee__tag">readyok</span> hash 256 threads 8 multipv 1</span>
     <span class="marquee__dot">·</span>
-    <span class="marquee__item">CHESS960</span>
+    <span class="marquee__item"><span class="marquee__tag">bestmove</span> e2e4 ponder e7e5</span>
     <span class="marquee__dot">·</span>
-    <span class="marquee__item">BLITZ · BULLET</span>
+    <span class="marquee__item"><span class="marquee__tag">stream</span> /api/bot/game/stream/abc123 connected · 200 OK</span>
     <span class="marquee__dot">·</span>
-    <span class="marquee__item">GM OPENING BOOK</span>
+    <span class="marquee__item"><span class="marquee__tag">book</span> polyglot · 1.2M entries · weighted</span>
     <span class="marquee__dot">·</span>
-    <span class="marquee__item">AUTO-CHALLENGER</span>
+    <span class="marquee__item"><span class="marquee__tag">queue</span> 12 challenges sent · 8 accepted · 4 declined</span>
     <span class="marquee__dot">·</span>
-    <span class="marquee__item">BOT LEADERBOARD</span>
-    <span class="marquee__dot">·</span>
-    <span class="marquee__item"><span class="marquee__glyph">♞</span> 127.0.0.1:8282</span>
-    <span class="marquee__dot">·</span>
-    <span class="marquee__item">POLYGLOT BOOK</span>
-    <span class="marquee__dot">·</span>
-    <span class="marquee__item">AVX2 + NNUE</span>
+    <span class="marquee__item"><span class="marquee__tag">eval</span> http://127.0.0.1:8282/eval · live json</span>
     <span class="marquee__dot">·</span>
   </div>
 </div>
@@ -553,7 +546,17 @@
 
 <section class="endgame" id="endgame">
   <div class="endgame-inner">
-    <div class="endgame-king" id="endgameKing" aria-hidden="true">♔</div>
+    <div class="endgame-clock" id="endgameClock" aria-hidden="true">
+      <div class="endgame-clock__face endgame-clock__face--w">
+        <div class="endgame-clock__row"><span class="endgame-clock__name">white</span></div>
+        <div class="endgame-clock__time">05:00</div>
+      </div>
+      <div class="endgame-clock__sep"></div>
+      <div class="endgame-clock__face endgame-clock__face--b endgame-clock__face--flagged">
+        <div class="endgame-clock__row"><span class="endgame-clock__flag">⚑</span><span class="endgame-clock__name">black</span></div>
+        <div class="endgame-clock__time">00:00</div>
+      </div>
+    </div>
     <div class="label endgame__eyebrow">Endgame</div>
     <h2 class="endgame-h2">Your bot is five minutes<br>and one Telegram message away.</h2>
     <div class="endgame-actions">

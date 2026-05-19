@@ -214,7 +214,7 @@
 
     gsap.registerPlugin(ScrollTrigger);
 
-    /* — Hero pin + PGN scrub ———————————————————————————————— */
+    /* — Hero PGN scrub (no pin — playback as user scrolls past hero) — */
     var heroSection = document.querySelector(".hero");
     var heroBoardWrap = document.querySelector(".hero-board__inner");
     var heroPlyTotal = document.querySelector(".hero-board__ply-total");
@@ -226,8 +226,8 @@
       ScrollTrigger.create({
         trigger: heroSection,
         start: "top top",
-        end: "+=120%",
-        scrub: 0.6,
+        end: "bottom top",
+        scrub: 0.4,
         onUpdate: function (self) {
           var p = self.progress;
           var idx = Math.min(HERO_PLY.length - 1, Math.floor(p * HERO_PLY.length));
@@ -237,19 +237,6 @@
           }
         }
       });
-      gsap.fromTo(heroBoardWrap,
-        { y: 0 },
-        {
-          y: -32,
-          ease: "none",
-          scrollTrigger: {
-            trigger: heroSection,
-            start: "top top",
-            end: "+=120%",
-            scrub: true,
-          }
-        }
-      );
     }
 
     /* — About: heading + body fade up ————————————————————— */
@@ -365,25 +352,25 @@
       });
     });
 
-    /* — Endgame king micro-magnetic on hover ———————————————— */
-    var king = document.getElementById("endgameKing");
-    if (king) {
-      gsap.from(king, {
+    /* — Endgame chess clock entrance + flag-tick on hover —————— */
+    var clock = document.getElementById("endgameClock");
+    if (clock) {
+      gsap.from(clock, {
         opacity: 0, y: 30, duration: 1, ease: "power3.out",
-        scrollTrigger: { trigger: king, start: "top 85%" }
+        scrollTrigger: { trigger: clock, start: "top 85%" }
       });
       gsap.from(".endgame-resigns", {
         opacity: 0, duration: 0.8, delay: 0.6, ease: "power2.out",
-        scrollTrigger: { trigger: king, start: "top 85%" }
+        scrollTrigger: { trigger: clock, start: "top 85%" }
       });
-      king.addEventListener("mousemove", function (e) {
-        var rect = king.getBoundingClientRect();
-        var dx = (e.clientX - rect.left - rect.width / 2) * 0.08;
-        var dy = (e.clientY - rect.top - rect.height / 2) * 0.08;
-        gsap.to(king, { x: dx, y: dy, duration: 0.4, ease: "power3.out" });
+      clock.addEventListener("mousemove", function (e) {
+        var rect = clock.getBoundingClientRect();
+        var dx = (e.clientX - rect.left - rect.width / 2) * 0.04;
+        var dy = (e.clientY - rect.top - rect.height / 2) * 0.04;
+        gsap.to(clock, { x: dx, y: dy, duration: 0.4, ease: "power3.out" });
       });
-      king.addEventListener("mouseleave", function () {
-        gsap.to(king, { x: 0, y: 0, duration: 0.6, ease: "elastic.out(1, 0.5)" });
+      clock.addEventListener("mouseleave", function () {
+        gsap.to(clock, { x: 0, y: 0, duration: 0.6, ease: "elastic.out(1, 0.5)" });
       });
     }
 
