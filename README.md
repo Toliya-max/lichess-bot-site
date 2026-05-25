@@ -10,8 +10,7 @@ Static landing site for **Lichess Bot Controller** — a Windows desktop app tha
 
 ## Auto-deploy
 
-Every push to `main` triggers `.github/workflows/netlify-deploy.yml`, which zips the site and uploads it to a static host via REST API. No laptop needed.
-
-Required repo secrets (host-specific):
-- `NETLIFY_AUTH_TOKEN`
-- `NETLIFY_SITE_ID`
+Hosted on **Cloudflare Pages** (`chessbot.pages.dev`), wired to the
+`Toliya-max/toliya-max.github.io` repo. The release pipeline (`release.py`)
+copies the built installer into the gh-pages worktree and pushes that repo;
+Cloudflare rebuilds automatically.

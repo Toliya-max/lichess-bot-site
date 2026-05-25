@@ -1,4 +1,3 @@
-.netlify-config
 *.prev.html
 *.prev.css
 .DS_Store
