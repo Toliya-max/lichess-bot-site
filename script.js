@@ -10,8 +10,18 @@
 
   // ─── Board glyphs ────────────────────────────────────────────────
   var G = {
-    K: "♔", Q: "♕", R: "♖", B: "♗", N: "♘", P: "♙",
-    k: "♚", q: "♛", r: "♜", b: "♝", n: "♞", p: "♟"
+    P: '<svg viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.5,9 C24.2,9 25.5,10.3 25.5,12 C25.5,13.7 24.2,15 22.5,15 C20.8,15 19.5,13.7 19.5,12 C19.5,10.3 20.8,9 22.5,9 Z M22.5,17.5 C26,17.5 29.5,22 30.5,29 C30.5,32 30,33 22.5,33 C15,33 14.5,32 14.5,29 C15.5,22 19,17.5 22.5,17.5 Z M12,36 L33,36" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    R: '<svg viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12,36 L33,36 M15,36 L15,18 L30,18 L30,36 M12,18 L33,18 M12,12 L15,12 L15,15 L20,15 L20,12 L25,12 L25,15 L30,15 L30,12 L33,12 M12,12 L12,18 M33,12 L33,18 M15,28 H30" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    N: '<svg viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M 22,10 C 22,10 19,11 16,15 C 13,19 13,23 13,23 C 13,23 14,24 15,22 C 16,20 19,19 19,19 C 19,19 17,21 15,25 C 13,29 13,31 13,31 C 13,31 16,30 19,27 C 19,27 19,28 19,30 C 19,32 17,35 17,35 C 17,35 22,35 27,33 C 32,31 32,24 32,24 C 32,24 34,22 34,18 C 34,14 31,11 27,10 Z M 12,36 L 33,36" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    B: '<svg viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.5,8 C23.3,8 24,8.7 24,9.5 C24,10.3 23.3,11 22.5,11 C21.7,11 21,10.3 21,9.5 C21,8.7 21.7,8 22.5,8 Z M16,36 C16,36 14,31.5 15.5,25 C17,18.5 20.5,13.5 22.5,12 C24.5,13.5 28,18.5 29.5,25 C31,31.5 29,36 29,36 L16,36 Z M15,31 H30 M22.5,15 V25 M20,18 H25" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    Q: '<svg viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12,36 L33,36 M15,36 L8,17.5 L16.5,26.5 L22.5,13.5 L28.5,26.5 L37,17.5 L30,36 Z M9,16 A 1.5,1.5 0 1,1 8.9,16 M16.5,25 A 1.5,1.5 0 1,1 16.4,25 M22.5,12 A 1.5,1.5 0 1,1 22.4,12 M28.5,25 A 1.5,1.5 0 1,1 28.4,25 M36,16 A 1.5,1.5 0 1,1 35.9,16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    K: '<svg viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12,36 L33,36 M15,36 L11.5,20.5 L18.5,25.5 L22.5,15.5 L26.5,25.5 L33.5,20.5 L30,36 Z M22.5,15.5 V10 M20,12.5 H25" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    p: '<svg viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.5,9 C24.2,9 25.5,10.3 25.5,12 C25.5,13.7 24.2,15 22.5,15 C20.8,15 19.5,13.7 19.5,12 C19.5,10.3 20.8,9 22.5,9 Z M22.5,17.5 C26,17.5 29.5,22 30.5,29 C30.5,32 30,33 22.5,33 C15,33 14.5,32 14.5,29 C15.5,22 19,17.5 22.5,17.5 Z M12,36 L33,36" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    r: '<svg viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12,36 L33,36 M15,36 L15,18 L30,18 L30,36 M12,18 L33,18 M12,12 L15,12 L15,15 L20,15 L20,12 L25,12 L25,15 L30,15 L30,12 L33,12 M12,12 L12,18 M33,12 L33,18 M15,28 H30" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    n: '<svg viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M 22,10 C 22,10 19,11 16,15 C 13,19 13,23 13,23 C 13,23 14,24 15,22 C 16,20 19,19 19,19 C 19,19 17,21 15,25 C 13,29 13,31 13,31 C 13,31 16,30 19,27 C 19,27 19,28 19,30 C 19,32 17,35 17,35 C 17,35 22,35 27,33 C 32,31 32,24 32,24 C 32,24 34,22 34,18 C 34,14 31,11 27,10 Z M 12,36 L 33,36" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    b: '<svg viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.5,8 C23.3,8 24,8.7 24,9.5 C24,10.3 23.3,11 22.5,11 C21.7,11 21,10.3 21,9.5 C21,8.7 21.7,8 22.5,8 Z M16,36 C16,36 14,31.5 15.5,25 C17,18.5 20.5,13.5 22.5,12 C24.5,13.5 28,18.5 29.5,25 C31,31.5 29,36 29,36 L16,36 Z M15,31 H30 M22.5,15 V25 M20,18 H25" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    q: '<svg viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12,36 L33,36 M15,36 L8,17.5 L16.5,26.5 L22.5,13.5 L28.5,26.5 L37,17.5 L30,36 Z M9,16 A 1.5,1.5 0 1,1 8.9,16 M16.5,25 A 1.5,1.5 0 1,1 16.4,25 M22.5,12 A 1.5,1.5 0 1,1 22.4,12 M28.5,25 A 1.5,1.5 0 1,1 28.4,25 M36,16 A 1.5,1.5 0 1,1 35.9,16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    k: '<svg viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12,36 L33,36 M15,36 L11.5,20.5 L18.5,25.5 L22.5,15.5 L26.5,25.5 L33.5,20.5 L30,36 Z M22.5,15.5 V10 M20,12.5 H25" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
   };
 
   function sqId(r, f) { return String.fromCharCode(97 + f) + (8 - r); }
@@ -21,9 +31,9 @@
     sq.className = "sq " + (isLight ? "light" : "dark");
     if (highlighted) sq.classList.add("hl");
     if (glyph) {
-      var p = document.createElement("span");
+      var p = document.createElement("div");
       p.className = "piece " + (glyph === glyph.toUpperCase() ? "white" : "black");
-      p.textContent = G[glyph];
+      p.innerHTML = G[glyph];
       sq.appendChild(p);
     }
     return sq;

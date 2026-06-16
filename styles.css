@@ -3,7 +3,7 @@
    Sleek × geometric × tech-typographic. Warm-black on gold.
    ───────────────────────────────────────────────────────────────────────── */
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import url('fonts.css');
 
 :root {
   /* base palette */
@@ -51,8 +51,8 @@
   /* tokens */
   --wrap-w:       1280px;
   --gutter:       clamp(20px, 3vw, 40px);
-  --section-pad:  clamp(96px, 14vh, 200px);
-  --section-pad-sm: clamp(56px, 9vh, 120px);
+  --section-pad:  clamp(72px, 11vh, 160px);
+  --section-pad-sm: clamp(44px, 7vh, 96px);
 
   /* easing */
   --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
@@ -89,7 +89,7 @@ body {
   color: var(--text);
   font-family: var(--ff-body);
   font-size: 16px;
-  line-height: 1.65;
+  line-height: 1.58;
   font-feature-settings: "ss01" on, "cv11" on;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -221,6 +221,14 @@ code, .mono {
   box-shadow:
     0 14px 36px -20px rgba(0,0,0,0.7),
     inset 0 0 0 1px rgba(212,152,90,0.04);
+  transition: border-color 300ms var(--ease-out), box-shadow 300ms var(--ease-out);
+}
+.board:hover {
+  border-color: var(--accent-line);
+  box-shadow:
+    0 20px 48px -16px rgba(0,0,0,0.8),
+    0 0 16px rgba(212,152,90,0.08),
+    inset 0 0 0 1px rgba(212,152,90,0.08);
 }
 .board-xl {
   box-shadow:
@@ -264,12 +272,31 @@ code, .mono {
 }
 
 .piece {
-  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 78%;
+  height: 78%;
   user-select: none;
-  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.32));
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+  transition: transform 180ms var(--ease-out);
 }
-.piece.white { color: #f6ecdc; }
-.piece.black { color: #14100b; }
+.piece svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.piece.white svg {
+  color: var(--text);
+  fill: rgba(240, 235, 228, 0.15);
+}
+.piece.black svg {
+  color: var(--accent);
+  fill: var(--bg-2);
+}
+.crosstable tbody tr:hover .piece {
+  transform: scale(1.1) translateY(-1px);
+}
 
 /* Crossed board — SVG stroke variant */
 .board--crossed { position: relative; }
@@ -372,7 +399,6 @@ code, .mono {
   place-items: center;
   width: 34px;
   height: 34px;
-  font-size: 21px;
   color: var(--accent);
   background: var(--panel-2);
   border: 1px solid var(--rule-hi);
@@ -380,7 +406,15 @@ code, .mono {
   line-height: 1;
   transition: border-color 220ms;
 }
+.brand-glyph svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+  color: var(--accent);
+  transition: color 220ms;
+}
 .brand:hover .brand-glyph { border-color: var(--accent-line); }
+.brand:hover .brand-glyph svg { color: var(--accent-hi); }
 .brand-wordmark {
   display: flex;
   flex-direction: column;
@@ -552,7 +586,7 @@ section + section { padding-top: var(--section-pad-sm); }
 
 .section-head {
   max-width: 60ch;
-  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+  margin-bottom: clamp(1.6rem, 3vw, 2.6rem);
   position: relative;
 }
 .section-head .label,
@@ -567,18 +601,18 @@ section + section { padding-top: var(--section-pad-sm); }
   color: var(--text-2);
   margin: 0.5rem 0 0;
   max-width: 56ch;
-  line-height: 1.6;
+  line-height: 1.55;
 }
 
 h1, h2, h3 { color: var(--text); }
 
 h2 {
   font-family: var(--ff-display);
-  font-size: clamp(2rem, 1rem + 3vw, 3.2rem);
+  font-size: clamp(1.8rem, 0.9rem + 2.4vw, 2.7rem);
   font-weight: 500;
   line-height: 1.06;
   letter-spacing: -0.018em;
-  margin: 1rem 0 1.1rem;
+  margin: 0.75rem 0 0.85rem;
   font-variation-settings: "opsz" 96;
   text-wrap: balance;
 }
@@ -591,8 +625,8 @@ h3 {
 /* ── HERO ──────────────────────────────────────────────────────────── */
 
 .hero {
-  padding-top: clamp(72px, 9vh, 132px);
-  padding-bottom: clamp(72px, 10vh, 140px);
+  padding-top: clamp(56px, 7vh, 108px);
+  padding-bottom: clamp(56px, 8vh, 112px);
   position: relative;
 }
 
@@ -625,15 +659,15 @@ h3 {
   z-index: 2;
   padding-right: clamp(8px, 2vw, 32px);
 }
-.hero-text .san-eyebrow { margin-bottom: 1.4rem; }
+.hero-text .san-eyebrow { margin-bottom: 1rem; }
 
 .hero-h1 {
   font-family: var(--ff-display);
-  font-size: clamp(2.8rem, 1.6rem + 4.4vw, 5.6rem);
+  font-size: clamp(2.6rem, 1.4rem + 3.6vw, 4.6rem);
   font-weight: 500;
   line-height: 0.98;
   letter-spacing: -0.022em;
-  margin: 0 0 1.6rem;
+  margin: 0 0 1.2rem;
   font-variation-settings: "opsz" 120, "SOFT" 50;
   text-wrap: balance;
   color: var(--text);
@@ -678,11 +712,11 @@ h3 {
 .hero-byline__sub { color: var(--text-3); }
 
 .hero-lede {
-  font-size: clamp(1.05rem, 0.95rem + 0.45vw, 1.2rem);
+  font-size: clamp(1rem, 0.9rem + 0.35vw, 1.1rem);
   color: var(--text-2);
   max-width: 56ch;
-  margin: 0 0 2rem;
-  line-height: 1.6;
+  margin: 0 0 1.4rem;
+  line-height: 1.55;
 }
 
 .hero-actions {
@@ -690,7 +724,7 @@ h3 {
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem 1.2rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.1rem;
 }
 .hero-foot {
   font-size: 0.88rem;
@@ -706,7 +740,7 @@ h3 {
 .hero-foot__link:hover { color: var(--accent-hi); border-color: var(--accent); }
 
 .hero-stats {
-  margin: clamp(2.5rem, 4vh, 3.5rem) 0 0;
+  margin: clamp(1.8rem, 3vh, 2.6rem) 0 0;
   padding: 1.2rem 0 0;
   border-top: 1px solid var(--rule);
   display: grid;
@@ -748,7 +782,7 @@ h3 {
   isolation: isolate;
 }
 .hero-board__square {
-  --bsz: clamp(260px, 34vw, 460px);
+  --bsz: clamp(240px, 29vw, 400px);
 }
 .hero-board__cap {
   display: flex;
@@ -836,7 +870,7 @@ h3 {
 .about-head .label { margin: 0.4rem 0 0; display: inline-block; }
 .about-head .san-eyebrow { margin-bottom: 0.6rem; }
 .about-h2 {
-  font-size: clamp(2.2rem, 1.4rem + 2.4vw, 3.4rem);
+  font-size: clamp(2rem, 1.2rem + 2vw, 2.8rem);
   margin: 0.85rem 0 0;
   line-height: 1.04;
 }
@@ -858,7 +892,7 @@ h3 {
   color: var(--text-2);
   margin: 0 0 1.2rem;
   max-width: 62ch;
-  line-height: 1.65;
+  line-height: 1.58;
 }
 .about-body p:last-of-type { margin-bottom: 0; }
 .about-lede { color: var(--text); }
@@ -911,9 +945,9 @@ h3 {
 .bento {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: minmax(220px, auto);
+  grid-auto-rows: minmax(190px, auto);
   gap: clamp(12px, 1.3vw, 18px);
-  margin-top: clamp(20px, 3vw, 32px);
+  margin-top: clamp(16px, 2.2vw, 24px);
 }
 .move-card--wide { grid-column: span 2; }
 
@@ -1980,7 +2014,7 @@ h3 {
 .legality-head .san-eyebrow { display: inline-block; margin-bottom: 0.6rem; }
 .legality-head h2 { margin: 0.4rem auto 0.75rem; }
 .legality-head .section-lede { margin-left: auto; margin-right: auto; }
-.legality-h2 { font-size: clamp(2.1rem, 1rem + 2.6vw, 3.2rem); }
+.legality-h2 { font-size: clamp(1.9rem, 0.9rem + 2.2vw, 2.7rem); }
 
 /* curl code block — torn paper */
 .code {
@@ -2156,7 +2190,7 @@ h3 {
 /* ── ENDGAME ───────────────────────────────────────────────────────── */
 
 .endgame {
-  padding-block: clamp(96px, 14vh, 180px);
+  padding-block: clamp(72px, 11vh, 144px);
   text-align: center;
   background:
     radial-gradient(ellipse 60% 80% at 50% 50%, rgba(212,152,90,0.05) 0%, transparent 70%),
@@ -2183,7 +2217,7 @@ h3 {
   align-items: stretch;
   gap: 0;
   width: fit-content;
-  margin: 0 auto clamp(1.4rem, 3vw, 2.4rem);
+  margin: 0 auto clamp(1rem, 2vw, 1.8rem);
   border: 1px solid var(--accent-line);
   border-radius: 4px;
   background: var(--bg-3);
@@ -2217,7 +2251,7 @@ h3 {
 .endgame-clock__name { color: inherit; }
 .endgame-clock__time {
   font-family: var(--ff-mono);
-  font-size: clamp(2.4rem, 4.8vw, 3.6rem);
+  font-size: clamp(2rem, 3.8vw, 3rem);
   font-weight: 500;
   letter-spacing: 0.02em;
   color: var(--text);
@@ -2248,8 +2282,8 @@ h3 {
 }
 .endgame__eyebrow { display: inline-block; margin-bottom: 1rem; }
 .endgame-h2 {
-  font-size: clamp(2.2rem, 1.4rem + 2.4vw, 3.4rem);
-  margin: 0.4rem 0 2.2rem;
+  font-size: clamp(2rem, 1.2rem + 2vw, 2.8rem);
+  margin: 0.4rem 0 1.6rem;
   line-height: 1.05;
   max-width: 22ch;
   margin-inline: auto;

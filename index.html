@@ -3,21 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Lichess Bot Controller — Run a 3000+ Elo Stockfish bot on your Lichess BOT account</title>
+<title>Lichess Bot Controller — Run a 2800+ Elo Stockfish bot on your Lichess BOT account</title>
 <meta name="description" content="Windows desktop app that runs Stockfish 18 on your Lichess BOT account. Auto-challenger, Chess960, NNUE, GM opening book. Buy days — no subscription. On-site and Telegram checkout.">
 <meta name="keywords" content="Lichess bot, Stockfish 18, BOT account, chess bot windows, auto-challenger, NNUE, Chess960, Lichess API, chess engine bot">
 <meta name="author" content="Toliya-max">
 <meta name="robots" content="index,follow,max-image-preview:large">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Lichess Bot Controller — 3000+ Elo bot for your Lichess BOT account">
+<meta property="og:title" content="Lichess Bot Controller — 2800+ Elo bot for your Lichess BOT account">
 <meta property="og:description" content="Windows app with Stockfish 18, GM opening book, auto-challenger, Chess960. Buy days via Telegram or directly on site.">
 <meta property="og:site_name" content="Lichess Bot Controller">
 <meta property="og:locale" content="en_US">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Lichess Bot Controller">
-<meta name="twitter:description" content="Run a 3000+ Elo Stockfish bot on your Lichess BOT account.">
+<meta name="twitter:description" content="Run a 2800+ Elo Stockfish bot on your Lichess BOT account.">
 
 <meta name="theme-color" content="#0e0b07">
 
@@ -44,31 +44,7 @@
 }
 </script>
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "VideoObject",
-  "name": "Stockfish 18 on Lichess in 5 Minutes — No Python, No Code",
-  "description": "Install the .exe, paste your Lichess BOT-account token, click Start. Stockfish 18 NNUE, GM opening book, auto-challenger, profile presets. 30-day free trial, then pay-per-days from $1. For Lichess BOT-flagged accounts only.",
-  "thumbnailUrl": "https://i.ytimg.com/vi/eEK5VBv92hE/maxresdefault.jpg",
-  "uploadDate": "2026-05-05T18:34:00Z",
-  "duration": "PT1M44S",
-  "contentUrl": "https://www.youtube.com/watch?v=eEK5VBv92hE",
-  "embedUrl": "https://www.youtube.com/embed/eEK5VBv92hE",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Lichess Bot Controller",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://chessbot.pages.dev/og-knight.png"
-    }
-  }
-}
-</script>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fonts.css">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -76,7 +52,9 @@
 <nav class="topbar">
   <div class="topbar-inner">
     <a href="#" class="brand" aria-label="Home">
-      <span class="brand-glyph" aria-hidden="true">♞</span>
+      <span class="brand-glyph" aria-hidden="true">
+        <svg viewBox="0 0 45 45" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="brand-knight-svg"><path d="M 22,10 C 22,10 19,11 16,15 C 13,19 13,23 13,23 C 13,23 14,24 15,22 C 16,20 19,19 19,19 C 19,19 17,21 15,25 C 13,29 13,31 13,31 C 13,31 16,30 19,27 C 19,27 19,28 19,30 C 19,32 17,35 17,35 C 17,35 22,35 27,33 C 32,31 32,24 32,24 C 32,24 34,22 34,18 C 34,14 31,11 27,10 Z M 12,36 L 33,36" /></svg>
+      </span>
       <span class="brand-wordmark">
         <span class="brand-word">Lichess</span>
         <span class="brand-sub">Bot Controller</span>
@@ -101,7 +79,7 @@
       <header class="hero-text">
         <div class="san-eyebrow"><span class="san-num">1.</span><span class="san-move">e4</span><span class="san-label">Opening</span></div>
         <h1 class="hero-h1">
-          Run a <span class="hero-h1__accent">3000+</span> Elo bot<br>
+          Run a <span class="hero-h1__accent">2800+</span> Elo bot<br>
           on your own Lichess<br>
           <span class="hero-h1__tail">BOT</span> account.
         </h1>
@@ -138,7 +116,6 @@
         <div class="hero-board__inner" id="heroBoardInner">
           <div class="board board-xl hero-board__square"
                id="heroBoard"
-               style="--bsz: 480px"
                data-fen="r1bqkb1r/1ppp1ppp/p1n2n2/4p3/B3P3/5N2/PPPP1PPP/RNBQK2R"
                data-highlight="a4,f6"></div>
           <figcaption class="hero-board__cap">
@@ -344,38 +321,6 @@
   </div>
 </div>
 
-<section class="demo" id="demo" style="padding:80px 0 40px;border-top:1px solid rgba(212,152,90,.18);">
-  <div class="wrap">
-    <header class="section-head demo-head" style="margin-bottom:32px;">
-      <div class="label">Watch it run</div>
-      <h2 style="font-family:var(--ff-display);font-size:clamp(32px,4.6vw,56px);font-weight:600;letter-spacing:-.02em;line-height:1.05;margin:8px 0 12px;color:#f3e6d1;">
-        One minute forty-four. <span style="color:#d4985a;">No edits.</span>
-      </h2>
-      <p class="section-lede" style="max-width:60ch;color:#a89986;">
-        Install, paste your Lichess BOT-account token, click Start. The first game starts about three seconds later. No voiceover, no fluff.
-      </p>
-    </header>
-    <figure style="margin:0;max-width:960px;">
-      <div style="position:relative;padding-top:56.25%;border-radius:14px;overflow:hidden;background:#0e0b07;box-shadow:0 30px 60px -20px rgba(0,0,0,.7),0 0 0 1px rgba(212,152,90,.18);">
-        <iframe
-          src="https://www.youtube-nocookie.com/embed/eEK5VBv92hE?rel=0&amp;modestbranding=1"
-          title="Stockfish 18 on Lichess in 5 Minutes — No Python, No Code"
-          loading="lazy"
-          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-          referrerpolicy="strict-origin-when-cross-origin"
-          style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
-      </div>
-      <figcaption style="margin-top:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;color:#7c6e5c;letter-spacing:.04em;text-transform:uppercase;">
-        <span>4. O-O · Live demonstration</span>
-        <a href="https://www.youtube.com/watch?v=eEK5VBv92hE" target="_blank" rel="noopener" style="color:#d4985a;text-decoration:none;">
-          Open on YouTube →
-        </a>
-      </figcaption>
-    </figure>
-  </div>
-</section>
-
 <section class="pricing" id="pricing">
   <div class="wrap">
     <header class="section-head pricing-head">
@@ -521,7 +466,7 @@
         </aside>
         <div class="faq-qa">
           <dt><span class="sym">!</span> How strong is it, really?</dt>
-          <dd>On a modern i7 or Ryzen 7 with NNUE, Stockfish 18 plays at 3000+ in blitz against bots of similar rating. Cap the Skill Level 0–20 to play weaker for training.</dd>
+          <dd>On a modern i7 or Ryzen 7 with NNUE, Stockfish 18 plays at 2800+ in blitz against bots of similar rating. Cap the Skill Level 0–20 to play weaker for training.</dd>
         </div>
       </div>
 
@@ -635,7 +580,9 @@
 <footer>
   <div class="wrap footer-inner">
     <div class="footer-brand">
-      <span class="brand-glyph" aria-hidden="true">♞</span>
+      <span class="brand-glyph" aria-hidden="true">
+        <svg viewBox="0 0 45 45" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="brand-knight-svg"><path d="M 22,10 C 22,10 19,11 16,15 C 13,19 13,23 13,23 C 13,23 14,24 15,22 C 16,20 19,19 19,19 C 19,19 17,21 15,25 C 13,29 13,31 13,31 C 13,31 16,30 19,27 C 19,27 19,28 19,30 C 19,32 17,35 17,35 C 17,35 22,35 27,33 C 32,31 32,24 32,24 C 32,24 34,22 34,18 C 34,14 31,11 27,10 Z M 12,36 L 33,36" /></svg>
+      </span>
       <span>Lichess Bot Controller</span>
     </div>
     <nav class="footer-nav" aria-label="Legal">
@@ -759,8 +706,8 @@
 </div>
 
 <script>window.CHECKOUT_API = "";</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="gsap.min.js" defer></script>
+<script src="ScrollTrigger.min.js" defer></script>
 <script src="script.js" defer></script>
 <script src="checkout.js" defer></script>
 </body>
