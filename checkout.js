@@ -5,7 +5,7 @@
 
   const TG_FALLBACK = "https://t.me/LichessBotDownoloaderbot";
   const OFFLINE_MSG =
-    "Checkout backend is temporarily offline. Pay via Telegram bot below — same prices, instant key delivery.";
+    "Checkout backend is temporarily offline. Pay via Telegram bot below, same prices, instant key delivery.";
 
   const steps = {
     form: modal.querySelector('[data-step="form"]'),
@@ -49,6 +49,7 @@
     verifyToken: null,
     resendCooldown: 0,
     resendTimer: null,
+    lastFocus: null,
   };
 
   function showStep(name) {
@@ -80,6 +81,7 @@
   }
 
   function openModal(tierPreset) {
+    state.lastFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     modal.hidden = false;
     document.body.style.overflow = "hidden";
     if (tierPreset && els.tier) els.tier.value = tierPreset;
@@ -91,6 +93,9 @@
     if (els.email && els.email.value) {
       validateEmailNow();
     }
+    setTimeout(() => {
+      if (els.email) els.email.focus({ preventScroll: true });
+    }, 0);
   }
 
   function closeModal() {
@@ -105,6 +110,10 @@
       state.resendTimer = null;
     }
     state.sessionId = null;
+    if (state.lastFocus && typeof state.lastFocus.focus === "function") {
+      state.lastFocus.focus({ preventScroll: true });
+    }
+    state.lastFocus = null;
   }
 
   modal.querySelectorAll("[data-close]").forEach((el) =>
@@ -112,7 +121,27 @@
   );
 
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !modal.hidden) closeModal();
+    if (modal.hidden) return;
+    if (e.key === "Escape") {
+      closeModal();
+      return;
+    }
+    if (e.key !== "Tab") return;
+    const focusables = Array.from(
+      modal.querySelectorAll(
+        'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      ),
+    ).filter((el) => el.offsetParent !== null);
+    if (!focusables.length) return;
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
   });
 
   document.querySelectorAll(".buy-btn").forEach((btn) =>
@@ -203,16 +232,16 @@
     }
     const cleaned = local.replace(/[._+-]/g, "");
     if (cleaned.length < 2) {
-      return { ok: false, code: "junk_local", message: "Please use a real email — random strings won't reach you." };
+      return { ok: false, code: "junk_local", message: "Please use a real email. Random strings won't reach you." };
     }
     if (/^[a-z]+$/.test(cleaned) && cleaned.length <= 2) {
-      return { ok: false, code: "junk_local", message: "Please use a real email — random strings won't reach you." };
+      return { ok: false, code: "junk_local", message: "Please use a real email. Random strings won't reach you." };
     }
     if (/^([a-z])\1{4,}$/.test(cleaned)) {
-      return { ok: false, code: "junk_local", message: "Please use a real email — random strings won't reach you." };
+      return { ok: false, code: "junk_local", message: "Please use a real email. Random strings won't reach you." };
     }
     if (/^(qwer|asdf|zxcv|qaz|wsx|edc|qwe|abc|aaa)/i.test(cleaned)) {
-      return { ok: false, code: "junk_local", message: "Please use a real email — random strings won't reach you." };
+      return { ok: false, code: "junk_local", message: "Please use a real email. Random strings won't reach you." };
     }
     return { ok: true, code: "client_ok" };
   }
@@ -560,8 +589,8 @@
       } catch (e) {
         if (els.poll) {
           els.poll.textContent = isNetworkErrorObject(e)
-            ? "Connection hiccup — retrying…"
-            : "Connection hiccup — retrying…";
+            ? "Connection hiccup, retrying..."
+            : "Connection hiccup, retrying...";
         }
       }
     };

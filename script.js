@@ -134,6 +134,23 @@
   document.querySelectorAll("[data-pieces]").forEach(renderPieceRowInline);
   document.querySelectorAll("[data-strip]").forEach(renderStrip);
 
+  // Pointer spotlight for premium hover surfaces. CSS consumes --spot-x / --spot-y.
+  (function initPointerSpotlight() {
+    var finePointer = window.matchMedia("(pointer: fine)").matches;
+    var prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!finePointer || prefersReduced) return;
+    var targets = document.querySelectorAll(".move-card, .crosstable-wrap, .hero-board__inner");
+    targets.forEach(function (el) {
+      el.addEventListener("pointermove", function (e) {
+        var rect = el.getBoundingClientRect();
+        var x = ((e.clientX - rect.left) / rect.width) * 100;
+        var y = ((e.clientY - rect.top) / rect.height) * 100;
+        el.style.setProperty("--spot-x", x.toFixed(2) + "%");
+        el.style.setProperty("--spot-y", y.toFixed(2) + "%");
+      });
+    });
+  }());
+
   // ─── Topbar scrolled state ──────────────────────────────────────
   (function initTopbar() {
     var topbar = document.querySelector(".topbar");
@@ -158,6 +175,7 @@
 
     var x = 0;
     var paused = false;
+    var hidden = document.hidden;
     var lastT = 0;
     var speed = 38; // px/sec
     var halfWidth = 0;
@@ -172,7 +190,7 @@
       if (!lastT) lastT = t;
       var dt = (t - lastT) / 1000;
       lastT = t;
-      if (!paused) {
+      if (!paused && !hidden) {
         x -= speed * dt;
         if (x <= -halfWidth) x += halfWidth;
         track.style.transform = "translate3d(" + x + "px, 0, 0)";
@@ -183,6 +201,9 @@
 
     wrap.addEventListener("mouseenter", function () { paused = true; });
     wrap.addEventListener("mouseleave", function () { paused = false; });
+    document.addEventListener("visibilitychange", function () {
+      hidden = document.hidden;
+    });
   }());
 
   // ─── Hero PGN pin + scrub (Ruy Lopez Morphy Defence) ────────────

@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Lichess Bot Controller — Run a 2800+ Elo Stockfish bot on your Lichess BOT account</title>
-<meta name="description" content="Windows desktop app that runs Stockfish 18 on your Lichess BOT account. Auto-challenger, Chess960, NNUE, GM opening book. Buy days — no subscription. On-site and Telegram checkout.">
+<title>Lichess Bot Controller | Run a 2800+ Elo Stockfish bot on your Lichess BOT account</title>
+<meta name="description" content="Windows desktop app that runs Stockfish 18 on your Lichess BOT account. Auto-challenger, Chess960, NNUE, GM opening book. Buy days, no subscription. On-site and Telegram checkout.">
 <meta name="keywords" content="Lichess bot, Stockfish 18, BOT account, chess bot windows, auto-challenger, NNUE, Chess960, Lichess API, chess engine bot">
 <meta name="author" content="Toliya-max">
 <meta name="robots" content="index,follow,max-image-preview:large">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Lichess Bot Controller — 2800+ Elo bot for your Lichess BOT account">
+<meta property="og:title" content="Lichess Bot Controller | 2800+ Elo bot for your Lichess BOT account">
 <meta property="og:description" content="Windows app with Stockfish 18, GM opening book, auto-challenger, Chess960. Buy days via Telegram or directly on site.">
 <meta property="og:site_name" content="Lichess Bot Controller">
 <meta property="og:locale" content="en_US">
@@ -48,6 +48,7 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="topbar">
   <div class="topbar-inner">
@@ -64,6 +65,11 @@
       <span class="topbar-coord">a1</span><span class="topbar-sep">/</span><span class="topbar-coord">h8</span>
     </div>
     <div class="topbar-right">
+      <div class="topbar-links" aria-label="Page sections">
+        <a href="#moves">Inside</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#legality">Rules</a>
+      </div>
       <span class="topbar-version" title="Current version">v1.6.1</span>
       <a href="https://t.me/LichessBotDownoloaderbot" class="btn-ghost btn-ghost--sm" target="_blank" rel="noopener">Open in Telegram</a>
     </div>
@@ -71,7 +77,7 @@
   <div class="board-strip" data-strip="32" aria-hidden="true"></div>
 </nav>
 
-<main>
+<main id="main">
 
 <section class="hero" id="hero">
   <div class="wrap">
@@ -89,8 +95,13 @@
           <span class="hero-byline__sub">Toliya-max · Windows desktop · 5.0 MB</span>
         </p>
         <p class="hero-lede">
-          Stockfish 18 is already inside. The GM opening book is already inside. The auto-challenger queues games while you sleep. You pay for days of running time through a Telegram bot — one day, one month, one year — and stop when you want to.
+          A Windows control room for a separate Lichess BOT account: engine, book, profiles, challenge queue, live logs, license time. No YAML. No weekend of API debugging.
         </p>
+        <ol class="hero-protocol" aria-label="Setup protocol">
+          <li><span>01</span> Upgrade a clean Lichess account to <strong>BOT</strong></li>
+          <li><span>02</span> Paste the token, choose profile, press Start</li>
+          <li><span>03</span> Buy only the days you want to run</li>
+        </ol>
         <div class="hero-actions">
           <a href="https://t.me/LichessBotDownoloaderbot" class="btn-primary" target="_blank" rel="noopener">
             Open the Telegram bot
@@ -118,6 +129,15 @@
                id="heroBoard"
                data-fen="r1bqkb1r/1ppp1ppp/p1n2n2/4p3/B3P3/5N2/PPPP1PPP/RNBQK2R"
                data-highlight="a4,f6"></div>
+          <div class="hero-analysis" aria-hidden="true">
+            <div class="hero-analysis__head">
+              <span class="hero-analysis__dot"></span>
+              <span>engine line</span>
+            </div>
+            <div class="hero-analysis__row"><span>depth</span><strong>18</strong></div>
+            <div class="hero-analysis__row"><span>score</span><strong>+0.47</strong></div>
+            <div class="hero-analysis__pv">e4 e5 Nf3 Nc6 Bb5 a6</div>
+          </div>
           <figcaption class="hero-board__cap">
             <span class="mono" id="heroBoardSan">Position after 4. Ba4 Nf6</span>
             <span class="hero-board__sub">Ruy Lopez · Morphy Defence</span>
@@ -150,7 +170,7 @@
       </p>
       <p class="about-cite">
         <span class="about-cite__rule" aria-hidden="true"></span>
-        <span class="about-cite__txt">— from a manual nobody wanted to write, so we shipped a GUI instead.</span>
+        <span class="about-cite__txt">A manual nobody wanted to write became a GUI instead.</span>
       </p>
     </div>
   </div>
@@ -210,13 +230,13 @@
       </article>
 
       <article class="move-card move-card--wide move-card--featured" style="--card-i:3">
-        <span class="move-card__pin" aria-hidden="true">★</span>
+        <span class="move-card__pin" aria-hidden="true">best line</span>
         <header class="move-card__head">
           <span class="move-san">8. d4</span>
           <span class="move-card__num" aria-hidden="true">04</span>
         </header>
         <h3 class="move-card__title">Bot Constructor</h3>
-        <p class="move-card__body">Visual profile editor. Build a tactical bot, a positional bot, a bullet bot — switch in one click without editing files. Each profile stores its own engine parameters, opening book, and time controls.</p>
+        <p class="move-card__body">Visual profile editor. Build a tactical bot, a positional bot, a bullet bot. Switch in one click without editing files. Each profile stores its own engine parameters, opening book, and time controls.</p>
         <ul class="move-card__profiles" aria-label="Profile presets">
           <li><span class="profile__name">tactical</span><span class="profile__num">skill 20 · depth ∞</span></li>
           <li><span class="profile__name">positional</span><span class="profile__num">skill 14 · depth 22</span></li>
@@ -291,7 +311,7 @@
         <p class="move-card__body">New versions arrive in the support bot as a <code>.exe</code>. One click. Settings and licence stay in place.</p>
         <div class="tg-tile" aria-hidden="true">
           <div class="tg-tile__head"><span class="tg-tile__dot"></span> @LichessBotDownoloaderbot</div>
-          <div class="tg-tile__msg">v1.6.1 is ready. Tap to update — 5.0 MB.</div>
+          <div class="tg-tile__msg">v1.6.1 is ready. Tap to update. 5.0 MB.</div>
           <div class="tg-tile__btn">Update now →</div>
         </div>
       </article>
@@ -324,8 +344,7 @@
 <section class="pricing" id="pricing">
   <div class="wrap">
     <header class="section-head pricing-head">
-      <div class="san-eyebrow san-eyebrow--small"><span class="san-num">5.</span><span class="san-move">Re1</span></div>
-      <div class="label">Tournament entry</div>
+      <div class="section-kicker"><span>Payment table</span><span>DonationAlerts or Telegram</span></div>
       <h2 class="pricing-h2">Buy days, not a subscription.</h2>
       <p class="section-lede">No auto-renewal. No billing cycle. You buy <em>N</em> days, you get <em>N</em> days, you renew when you feel like it.</p>
       <div class="pricing-rounds" aria-hidden="true">5 rounds</div>
@@ -350,7 +369,7 @@
             <td class="col-plan">1 day</td>
             <td class="col-price">$1</td>
             <td class="col-day">$1.00</td>
-            <td class="col-act"><button type="button" class="buy-btn" data-tier="1day"><span>Buy</span><span class="buy-btn__arrow" aria-hidden="true">→</span></button></td>
+            <td class="col-act"><button type="button" class="buy-btn" data-tier="1day"><span>Buy 1 day</span><span class="buy-btn__arrow" aria-hidden="true">→</span></button></td>
           </tr>
           <tr data-row="2">
             <td class="col-rn"><span class="rn">2</span></td>
@@ -358,7 +377,7 @@
             <td class="col-plan">7 days</td>
             <td class="col-price">$3</td>
             <td class="col-day">$0.43</td>
-            <td class="col-act"><button type="button" class="buy-btn" data-tier="7days"><span>Buy</span><span class="buy-btn__arrow" aria-hidden="true">→</span></button></td>
+            <td class="col-act"><button type="button" class="buy-btn" data-tier="7days"><span>Buy 7 days</span><span class="buy-btn__arrow" aria-hidden="true">→</span></button></td>
           </tr>
           <tr class="row-hi" data-row="3">
             <td class="col-rn"><span class="rn">3</span></td>
@@ -366,7 +385,7 @@
             <td class="col-plan">30 days <span class="pick">most picked</span></td>
             <td class="col-price">$7</td>
             <td class="col-day">$0.23</td>
-            <td class="col-act"><button type="button" class="buy-btn buy-btn--hi" data-tier="monthly"><span>Buy</span><span class="buy-btn__arrow" aria-hidden="true">→</span></button></td>
+            <td class="col-act"><button type="button" class="buy-btn buy-btn--hi" data-tier="monthly"><span>Buy 30 days</span><span class="buy-btn__arrow" aria-hidden="true">→</span></button></td>
           </tr>
           <tr data-row="4">
             <td class="col-rn"><span class="rn">4</span></td>
@@ -374,7 +393,7 @@
             <td class="col-plan">90 days</td>
             <td class="col-price">$15</td>
             <td class="col-day">$0.17</td>
-            <td class="col-act"><button type="button" class="buy-btn" data-tier="3months"><span>Buy</span><span class="buy-btn__arrow" aria-hidden="true">→</span></button></td>
+            <td class="col-act"><button type="button" class="buy-btn" data-tier="3months"><span>Buy 90 days</span><span class="buy-btn__arrow" aria-hidden="true">→</span></button></td>
           </tr>
           <tr data-row="5">
             <td class="col-rn"><span class="rn">5</span></td>
@@ -382,12 +401,12 @@
             <td class="col-plan">365 days</td>
             <td class="col-price">$30</td>
             <td class="col-day">$0.08</td>
-            <td class="col-act"><button type="button" class="buy-btn" data-tier="yearly"><span>Buy</span><span class="buy-btn__arrow" aria-hidden="true">→</span></button></td>
+            <td class="col-act"><button type="button" class="buy-btn" data-tier="yearly"><span>Buy 365 days</span><span class="buy-btn__arrow" aria-hidden="true">→</span></button></td>
           </tr>
         </tbody>
       </table>
     </div>
-    <p class="note">All prices in <strong>USD</strong>. Paid via DonationAlerts in USD directly — your bank handles any conversion at the current rate.</p>
+    <p class="note">All prices in <strong>USD</strong>. Paid via DonationAlerts in USD directly. Your bank handles any conversion at the current rate.</p>
   </div>
 </section>
 
@@ -439,7 +458,7 @@
     <figure class="code">
       <figcaption class="code__cap">
         <span class="code__cap-file">api-call.sh</span>
-        <span class="code__cap-note">Flag an account as BOT. Irreversible — use one with zero rated games.</span>
+        <span class="code__cap-note">Flag an account as BOT. Irreversible. Use one with zero rated games.</span>
       </figcaption>
 <pre><code class="code__body"><span class="code__prompt">$</span> curl -X POST https://lichess.org/api/bot/account/upgrade \
        -H "Authorization: Bearer YOUR_API_TOKEN"</code></pre>
@@ -454,8 +473,7 @@
 <section class="faq" id="faq">
   <div class="wrap">
     <header class="section-head faq-head">
-      <div class="san-eyebrow san-eyebrow--small"><span class="san-num">7.</span><span class="san-move">h3</span></div>
-      <div class="label">Notes in the margin</div>
+      <div class="section-kicker"><span>Operator notes</span><span>Short answers before checkout</span></div>
       <h2 class="faq-h2">Frequently asked.</h2>
     </header>
 
@@ -486,14 +504,14 @@
         </aside>
         <div class="faq-qa">
           <dt><span class="sym">!?</span> Can I use Leela or my own engine?</dt>
-          <dd>Yes. The Engine tab has a path field. Any UCI-compatible binary works — Stockfish, Lc0, anything.</dd>
+          <dd>Yes. The Engine tab has a path field. Any UCI-compatible binary works: Stockfish, Lc0, anything.</dd>
         </div>
       </div>
 
       <div class="faq-row faq-row--right">
         <div class="faq-qa">
           <dt><span class="sym">?!</span> One license, how many machines?</dt>
-          <dd>One at a time. Two transfers per month via support if you change computers. Need two simultaneous — buy two keys.</dd>
+          <dd>One at a time. Two transfers per month via support if you change computers. Need two simultaneous installs? Buy two keys.</dd>
         </div>
         <aside class="faq-mini" aria-hidden="true">
           <div class="board" style="--bsz: 60px" data-mini="_R_/___/_R_"></div>
@@ -513,7 +531,7 @@
       <div class="faq-row faq-row--right">
         <div class="faq-qa">
           <dt><span class="sym">??</span> Will my main Lichess account get banned?</dt>
-          <dd>If you run this on your <em>human</em> account — yes, immediately. That's cheating. Make a separate BOT-flagged account. That's the entire rule.</dd>
+          <dd>If you run this on your <em>human</em> account, yes, immediately. That's cheating. Make a separate BOT-flagged account. That's the entire rule.</dd>
         </div>
         <aside class="faq-mini" aria-hidden="true">
           <div class="board" style="--bsz: 60px" data-mini="_k_/___/_K_"></div>
@@ -552,7 +570,7 @@
       </div>
       <div class="endgame-clock__sep"></div>
       <div class="endgame-clock__face endgame-clock__face--b endgame-clock__face--flagged">
-        <div class="endgame-clock__row"><span class="endgame-clock__flag">⚑</span><span class="endgame-clock__name">black</span></div>
+        <div class="endgame-clock__row"><span class="endgame-clock__flag">flagged</span><span class="endgame-clock__name">black</span></div>
         <div class="endgame-clock__time">00:00</div>
       </div>
     </div>
@@ -568,7 +586,7 @@
         <span class="mono mono--chip">.exe</span>
       </a>
     </div>
-    <p class="endgame-resigns"><em>… and Black resigns.</em></p>
+    <p class="endgame-resigns"><em>Black resigns.</em></p>
     <p class="endgame-hint">
       <span class="mono">v1.6.1</span> · Windows x64 · 5.0&nbsp;MB · .NET Desktop Runtime 9.0 · License activates via the Telegram bot after install.
     </p>
@@ -601,24 +619,24 @@
 
 <div class="noise-overlay" aria-hidden="true"></div>
 
-<!-- Checkout modal — DOM contract: every id/data-* below is queried by checkout.js -->
+<!-- Checkout modal: DOM contract, every id/data-* below is queried by checkout.js -->
 <div class="checkout-modal" id="checkoutModal" hidden>
   <div class="checkout-modal__backdrop" data-close></div>
-  <div class="checkout-modal__panel" role="dialog" aria-modal="true" aria-labelledby="coTitle">
+  <div class="checkout-modal__panel" role="dialog" aria-modal="true" aria-labelledby="coTitle" aria-describedby="coIntro">
     <button class="checkout-modal__close" data-close aria-label="Close">×</button>
 
     <div class="checkout-step" data-step="form">
       <div class="label">On-site checkout</div>
       <h3 id="coTitle">Buy license on site</h3>
-      <p class="checkout-lede">Pick a plan, pay via DonationAlerts, get your key right here — no Telegram needed.</p>
+      <p class="checkout-lede" id="coIntro">Pick a plan, pay via DonationAlerts, get your key right here. Telegram is optional.</p>
       <div class="checkout-field">
         <label for="coTier">Plan</label>
         <select id="coTier">
-          <option value="1day">1 day — $1</option>
-          <option value="7days">7 days — $3</option>
-          <option value="monthly" selected>30 days — $7</option>
-          <option value="3months">90 days — $15</option>
-          <option value="yearly">365 days — $30</option>
+          <option value="1day">1 day, $1</option>
+          <option value="7days">7 days, $3</option>
+          <option value="monthly" selected>30 days, $7</option>
+          <option value="3months">90 days, $15</option>
+          <option value="yearly">365 days, $30</option>
         </select>
       </div>
       <div class="checkout-field">
@@ -650,7 +668,7 @@
         <button type="button" class="btn-ghost btn-ghost--sm" id="coVerifyResend">Resend code</button>
         <button type="button" class="btn-link btn-link--sm" id="coVerifyBack">Use a different email</button>
       </div>
-      <p class="checkout-foot">Didn't get the code? Check spam, then click Resend. Still nothing? Pay via Telegram below — same prices.</p>
+      <p class="checkout-foot">Didn't get the code? Check spam, then click Resend. Still nothing? Pay via Telegram below, same prices.</p>
     </div>
 
     <div class="checkout-step" data-step="pay" hidden>
@@ -677,7 +695,7 @@
         <span class="arrow" aria-hidden="true">→</span>
       </a>
       <p class="checkout-foot">
-        DA can't pre-fill the form for anonymous users — copy both fields above and paste them on DonationAlerts. The key will appear here automatically once the payment lands (≈10 sec).
+        DA can't pre-fill the form for anonymous users. Copy both fields above and paste them on DonationAlerts. The key will appear here automatically once the payment lands (about 10 sec).
       </p>
       <span id="coCode" hidden></span>
       <span id="coAmountInline" hidden></span>
@@ -691,7 +709,7 @@
       <button class="btn-ghost checkout-copy" id="coCopy">Copy key</button>
       <p class="checkout-foot">
         Download <a href="/downloads/LichessBotSetup.exe">the installer</a>, run it, paste this key when prompted.
-        <br>If you gave an email, save the key — we don't store it forever.
+        <br>If you gave an email, save the key. We don't store it forever.
       </p>
     </div>
 
